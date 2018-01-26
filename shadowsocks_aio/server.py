@@ -256,7 +256,7 @@ class ShadowsocksHandler:
         context.local_eof = True
         try:
             write_to.write_eof()
-        except ConnectionResetError:
+        except (ConnectionResetError, OSError):
             pass
 
     async def ss_forward_B(self, read_from, write_to, cipher, context, timeout=60):
